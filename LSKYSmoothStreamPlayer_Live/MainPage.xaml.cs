@@ -18,5 +18,15 @@ namespace LSKYSmoothStreamPlayer_Live
         {
             InitializeComponent();
         }
+
+        private void btnFullScreen_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void vidVolumeSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+
+        }
     }
 }

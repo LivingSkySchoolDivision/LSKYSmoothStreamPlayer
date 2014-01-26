@@ -18,5 +18,30 @@ namespace LSKYSmoothStreamPlayer_PreRecorded
         {
             InitializeComponent();
         }
+
+        private void vidVolumeSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+
+        }
+
+        private void btnFullScreen_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnPause_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void scrubBar_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+
+        }
+
+        private void scrubBar_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+
+        }
     }
 }
