@@ -104,7 +104,12 @@ namespace LSKYSmoothStreamPlayer_Live
         /// <param name="thisStatus"></param>
         public void setStatus(String thisStatus)
         {
-            statusText.Text = thisStatus;
+            statusText.Text = thisStatus; 
+            
+            // If the status changes, show the controls
+            LastMouseMovement = DateTime.Now;
+            areControlsHidden = false;
+            ControlBar.Visibility = Visibility.Visible;
         }
 
         /// <summary>
