@@ -244,7 +244,7 @@
     </UserControl.Resources>
 
     <Grid x:Name="LayoutRoot" Background="White" Width="640" Height="480">
-        <SmoothStreaming:SmoothStreamingMediaElement Name="SmoothStreamElement" Volume="1" Background="Black" Loaded="SmoothStreamElement_Loaded" />
+        <SmoothStreaming:SmoothStreamingMediaElement Name="SmoothStreamElement" Volume="1" Background="Black" Loaded="SmoothStreamElement_Loaded" MouseLeftButtonDown="SmoothStreamElement_MouseLeftButtonDown" />
         <Grid Background="White" x:Name="cnvBlank">
             <Canvas Height="346" x:Name="cnvLskyLogo" Width="260" Background="Transparent" Canvas.Left="190" Canvas.Top="75" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="190,72,190,62">
                 <Image Canvas.Left="5" Canvas.Top="5" Height="277" x:Name="image2" Stretch="Fill" Width="250" Source="LSKYLogo_Transparent.png" />

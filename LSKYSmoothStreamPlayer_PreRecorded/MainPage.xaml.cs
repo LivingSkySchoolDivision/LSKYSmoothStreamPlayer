@@ -94,6 +94,22 @@ namespace LSKYSmoothStreamPlayer_PreRecorded
 
         #region General stuff
 
+        private void HideControls()
+        {
+            ControlBar.Visibility = Visibility.Collapsed;
+            areControlsHidden = true;
+
+            this.Cursor = Cursors.None;
+        }
+
+        private void ShowControls()
+        {
+            areControlsHidden = false;
+            ControlBar.Visibility = Visibility.Visible;
+
+            this.Cursor = Cursors.Arrow;
+        }
+
         /// <summary>
         /// A quick and easy way to change the size of the player
         /// </summary>
@@ -326,6 +342,24 @@ namespace LSKYSmoothStreamPlayer_PreRecorded
             }
         }
 
+        private void SmoothStreamElement_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (isPaused)
+            {
+                SmoothStreamElement.Play();
+                updateStatusWithTime();
+                VideoTimeDisplayTimer.Start();
+                isPaused = false;
+            }
+            else
+            {
+                SmoothStreamElement.Pause();
+                setStatus("Paused");
+                VideoTimeDisplayTimer.Stop();
+                isPaused = true;
+            }
+        }
+
         private void btnPause_Click(object sender, RoutedEventArgs e)
         {
             if (isPaused)
@@ -401,8 +435,7 @@ namespace LSKYSmoothStreamPlayer_PreRecorded
             LastMouseMovement = DateTime.Now;
             if (areControlsHideable)
             {
-                areControlsHidden = false;
-                ControlBar.Visibility = Visibility.Visible;
+                ShowControls();
             }
         }
 
@@ -416,8 +449,7 @@ namespace LSKYSmoothStreamPlayer_PreRecorded
                     TimeSpan TimeSinceLastMouseMovement = DateTime.Now - LastMouseMovement;
                     if (TimeSinceLastMouseMovement >= ControlTimeout)
                     {
-                        ControlBar.Visibility = Visibility.Collapsed;
-                        areControlsHidden = true;
+                        HideControls();
                     }
                 }
             }
@@ -444,5 +476,7 @@ namespace LSKYSmoothStreamPlayer_PreRecorded
         }
 
         #endregion
+
+       
     }
 }

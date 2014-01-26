@@ -38,7 +38,9 @@ namespace LSKYSmoothStreamPlayer_Live
         public MainPage()
         {
             InitializeComponent();
-            
+
+            LastMouseMovement = DateTime.Now;
+
             // Set up event handlers for full screen
             Application.Current.Host.Content.FullScreenChanged += Content_FullScreenChanged;
 
@@ -105,8 +107,7 @@ namespace LSKYSmoothStreamPlayer_Live
             
             // If the status changes, show the controls
             LastMouseMovement = DateTime.Now;
-            areControlsHidden = false;
-            ControlBar.Visibility = Visibility.Visible;
+            ShowControls();
         }
 
         /// <summary>
@@ -179,6 +180,18 @@ namespace LSKYSmoothStreamPlayer_Live
         {
             cnvBlank.Visibility = Visibility.Visible;
             vidVolumeSlider.IsEnabled = false;
+        }
+
+        private void HideControls()
+        {
+            ControlBar.Visibility = Visibility.Collapsed;
+            areControlsHidden = true;
+        }
+
+        private void ShowControls()
+        {
+            areControlsHidden = false;
+            ControlBar.Visibility = Visibility.Visible;
         }
 
         #endregion
@@ -333,8 +346,7 @@ namespace LSKYSmoothStreamPlayer_Live
             LastMouseMovement = DateTime.Now;
             if (areControlsHideable)
             {
-                areControlsHidden = false;
-                ControlBar.Visibility = Visibility.Visible;
+                ShowControls();
             }
         }
 
@@ -348,8 +360,7 @@ namespace LSKYSmoothStreamPlayer_Live
                     TimeSpan TimeSinceLastMouseMovement = DateTime.Now - LastMouseMovement;
                     if (TimeSinceLastMouseMovement >= ControlTimeout)
                     {
-                        ControlBar.Visibility = Visibility.Collapsed;
-                        areControlsHidden = true;
+                        HideControls();
                     }
                 }
             }
