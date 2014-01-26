@@ -19,6 +19,9 @@ namespace LSKYSmoothStreamPlayer_Live
     {
         private const double DefaultPlayerWidth = 640;
         private const double DefaultPlayerHeight = 480;
+
+        private const double MinPlayerWidth = 640;
+        private const double MinPlayerHeight = 480;
                 
         //  These get set by the App, before this page is started
         public static double? PlayerWidthFromParameters;
@@ -61,7 +64,7 @@ namespace LSKYSmoothStreamPlayer_Live
             ControlHideTimer.Start();
 
             // See if the width and height were set by the user when the player was loaded
-            if ((PlayerWidthFromParameters != null) && (PlayerWidthFromParameters > DefaultPlayerWidth))
+            if ((PlayerWidthFromParameters != null) && (PlayerWidthFromParameters > MinPlayerWidth))
             {
                 PlayerWidth = (double)PlayerWidthFromParameters;
             }
@@ -70,7 +73,7 @@ namespace LSKYSmoothStreamPlayer_Live
                 PlayerWidth = DefaultPlayerWidth;
             }
 
-            if ((PlayerHeightFromParameters != null) && (PlayerHeightFromParameters > DefaultPlayerHeight))
+            if ((PlayerHeightFromParameters != null) && (PlayerHeightFromParameters > MinPlayerHeight))
             {
                 PlayerHeight = (double)PlayerHeightFromParameters;
             }
