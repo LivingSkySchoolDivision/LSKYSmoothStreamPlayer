@@ -140,7 +140,7 @@
                 <Image Canvas.Left="5" Canvas.Top="5" Height="277" Name="image2" Stretch="Fill" Width="250" Source="LSKYLogo_Transparent.png" />
                 <TextBlock Canvas.Left="0" Canvas.Top="297" Height="28" Name="textBlock1" Text="Living Sky Streaming Video" Width="260" FontSize="18" FontFamily="Portable User Interface" Foreground="Black" TextAlignment="Center" />
                 <TextBlock Canvas.Left="0" Canvas.Top="320" Height="17" Name="textBlock3" Text="http://streaming.lskysd.ca" Width="260" TextAlignment="Center" />
-                <TextBlock Canvas.Left="0" Canvas.Top="337" Height="17" x:Name="textBlock3_Copy" Text="Live Streaming Player v 3.0" Width="260" TextAlignment="Center" FontSize="8" />
+                <TextBlock Canvas.Left="0" Canvas.Top="337" Height="17" x:Name="textBlock3_Copy" Text="Live Streaming Player v3.0" Width="260" TextAlignment="Center" FontSize="8" />
             </Canvas>
         </Grid>
         <Grid Height="20" VerticalAlignment="Bottom" Name="ControlBar" Background="Black" Opacity="0.5">

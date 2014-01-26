@@ -34,13 +34,11 @@ namespace LSKYSmoothStreamPlayer_Live
         private static System.Windows.Threading.DispatcherTimer ControlHideTimer;
         private bool areControlsHidden;
         private bool areControlsHideable;
-
-
+        
         public MainPage()
         {
             InitializeComponent();
-
-
+            
             // Set up event handlers for full screen
             Application.Current.Host.Content.FullScreenChanged += Content_FullScreenChanged;
 
@@ -59,7 +57,6 @@ namespace LSKYSmoothStreamPlayer_Live
             ControlHideTimer.Interval = TimeSpan.FromSeconds(1);
             ControlHideTimer.Tick += new EventHandler(ControlHideTimer_Tick);
             ControlHideTimer.Start();
-
 
             // See if the width and height were set by the user when the player was loaded
             if ((PlayerWidthFromParameters != null) && (PlayerWidthFromParameters > DefaultPlayerWidth))
@@ -237,7 +234,7 @@ namespace LSKYSmoothStreamPlayer_Live
 
         private void SmoothStreamElement_Loaded(object sender, RoutedEventArgs e)
         {
-            vidVolumeSlider.Value = 1;
+            vidVolumeSlider.Value = 0.75;
             loadStreams();
         }
 

@@ -50,6 +50,7 @@ namespace LSKYSmoothStreamPlayer_Live
                     MainPage.PlayerHeightFromParameters = parsedDouble;
                 }
             } 
+
             this.RootVisual = new MainPage();
         }
 

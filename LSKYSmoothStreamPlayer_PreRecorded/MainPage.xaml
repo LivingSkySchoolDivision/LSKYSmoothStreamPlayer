@@ -244,15 +244,16 @@
     </UserControl.Resources>
 
     <Grid x:Name="LayoutRoot" Background="White" Width="640" Height="480">
-        <SmoothStreaming:SmoothStreamingMediaElement Name="SmoothStreamElement" Volume="1" Background="White"/>
+        <SmoothStreaming:SmoothStreamingMediaElement Name="SmoothStreamElement" Volume="1" Background="Black" Loaded="SmoothStreamElement_Loaded" />
         <Grid Background="White" x:Name="cnvBlank">
-            <Canvas Height="337" x:Name="cnvLskyLogo" Width="260" Background="Transparent" Canvas.Left="190" Canvas.Top="75" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Canvas Height="346" x:Name="cnvLskyLogo" Width="260" Background="Transparent" Canvas.Left="190" Canvas.Top="75" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="190,72,190,62">
                 <Image Canvas.Left="5" Canvas.Top="5" Height="277" x:Name="image2" Stretch="Fill" Width="250" Source="LSKYLogo_Transparent.png" />
                 <TextBlock Canvas.Left="0" Canvas.Top="297" Height="28" x:Name="textBlock1" Text="Living Sky Streaming Video" Width="260" FontSize="18" FontFamily="Portable User Interface" Foreground="Black" TextAlignment="Center" />
                 <TextBlock Canvas.Left="0" Canvas.Top="320" Height="17" x:Name="textBlock3" Text="http://streaming.lskysd.ca" Width="260" TextAlignment="Center" />
+                <TextBlock Canvas.Left="0" Canvas.Top="334" Height="17" x:Name="textBlock3_Copy" Text="Video Player v3.0" Width="260" TextAlignment="Center" FontSize="8" />
             </Canvas>
         </Grid>
-        <Grid Height="20" VerticalAlignment="Bottom" Name="ControlBar" Background="Black">
+        <Grid Height="20" VerticalAlignment="Bottom" Name="ControlBar" Background="Black" Opacity="0.5">
             <TextBlock x:Name="statusText" Text="Status!" FontSize="10" Foreground="WhiteSmoke" Margin="0,0,155,0" Height="19" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="176" />
             <Button Content="Full" x:Name="btnFullScreen" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="25" Click="btnFullScreen_Click" IsEnabled="True" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF969696" Style="{StaticResource SquareButton}" />
             <Slider Height="18" HorizontalAlignment="Right" Margin="0,0,26,1" x:Name="vidVolumeSlider" VerticalAlignment="Bottom" Width="100" ValueChanged="vidVolumeSlider_ValueChanged" Maximum="1" LargeChange="0.1" Foreground="White" Style="{StaticResource VolumeSlider}" />
