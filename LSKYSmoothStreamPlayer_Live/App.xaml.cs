@@ -14,7 +14,6 @@ namespace LSKYSmoothStreamPlayer_Live
 {
     public partial class App : Application
     {
-
         public App()
         {
             this.Startup += this.Application_Startup;
@@ -26,6 +25,31 @@ namespace LSKYSmoothStreamPlayer_Live
 
         private void Application_Startup(object sender, StartupEventArgs e)
         {
+            // Load parameters
+            if (e.InitParams.ContainsKey("streamuri"))
+            {
+                MainPage.configStreamURI = e.InitParams["streamuri"];
+            }
+
+            if (e.InitParams.ContainsKey("width"))
+            {
+                double parsedDouble = 0;
+
+                if (double.TryParse(e.InitParams["width"], out parsedDouble))
+                {
+                    MainPage.PlayerWidthFromParameters = parsedDouble;
+                }
+            }
+
+            if (e.InitParams.ContainsKey("height"))
+            {
+                double parsedDouble = 0;
+
+                if (double.TryParse(e.InitParams["height"], out parsedDouble))
+                {
+                    MainPage.PlayerHeightFromParameters = parsedDouble;
+                }
+            } 
             this.RootVisual = new MainPage();
         }
 
