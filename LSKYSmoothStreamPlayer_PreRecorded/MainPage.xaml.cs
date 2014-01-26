@@ -344,20 +344,7 @@ namespace LSKYSmoothStreamPlayer_PreRecorded
 
         private void SmoothStreamElement_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            if (isPaused)
-            {
-                SmoothStreamElement.Play();
-                updateStatusWithTime();
-                VideoTimeDisplayTimer.Start();
-                isPaused = false;
-            }
-            else
-            {
-                SmoothStreamElement.Pause();
-                setStatus("Paused");
-                VideoTimeDisplayTimer.Stop();
-                isPaused = true;
-            }
+            btnPause_Click(sender, e);
         }
 
         private void btnPause_Click(object sender, RoutedEventArgs e)
@@ -368,6 +355,7 @@ namespace LSKYSmoothStreamPlayer_PreRecorded
                 updateStatusWithTime();
                 VideoTimeDisplayTimer.Start();
                 isPaused = false;
+                areControlsHideable = true;
             }
             else
             {
@@ -375,8 +363,10 @@ namespace LSKYSmoothStreamPlayer_PreRecorded
                 setStatus("Paused");
                 VideoTimeDisplayTimer.Stop();
                 isPaused = true;
+                areControlsHideable = false;
             }
-
+            LastMouseMovement = DateTime.Now;
+            ShowControls();
         }
 
         private void scrubBar_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
