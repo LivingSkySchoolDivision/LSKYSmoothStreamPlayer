@@ -195,7 +195,7 @@ namespace LSKYSmoothStreamPlayer_PreRecorded
             cnvBlank.Visibility = Visibility.Collapsed;
             vidVolumeSlider.IsEnabled = true;
             scrubBar.IsEnabled = true;
-            btnPause.IsEnabled = true;
+            btnPause.IsEnabled = true;            
         }
 
         /// <summary>
@@ -207,6 +207,7 @@ namespace LSKYSmoothStreamPlayer_PreRecorded
             vidVolumeSlider.IsEnabled = false;
             scrubBar.IsEnabled = false;
             btnPause.IsEnabled = false;
+            ShowControls();
         }
 
         /// <summary>
