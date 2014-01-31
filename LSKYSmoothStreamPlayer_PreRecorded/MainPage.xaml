@@ -244,7 +244,7 @@
     </UserControl.Resources>
 
     <Grid x:Name="LayoutRoot" Background="White" Width="640" Height="480">
-        <SmoothStreaming:SmoothStreamingMediaElement x:Name="SmoothStreamElement" Volume="1" Background="Black" Loaded="SmoothStreamElement_Loaded" MouseLeftButtonDown="SmoothStreamElement_MouseLeftButtonDown" />
+        <SmoothStreaming:SmoothStreamingMediaElement x:Name="SmoothStreamElement" Volume="0.5" Background="Black" Loaded="SmoothStreamElement_Loaded" MouseLeftButtonDown="SmoothStreamElement_MouseLeftButtonDown" />
         <Grid Background="White" x:Name="cnvBlank">
             <Canvas Height="346" x:Name="cnvLskyLogo" Width="260" Background="Transparent" Canvas.Left="190" Canvas.Top="75" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="190,72,190,62">
                 <Image Canvas.Left="5" Canvas.Top="5" Height="277" x:Name="image2" Stretch="Fill" Width="250" Source="LSKYLogo_Transparent.png" />
@@ -256,7 +256,7 @@
         <Grid Height="20" VerticalAlignment="Bottom" x:Name="ControlBar" Background="Black" Opacity="0.5">
             <TextBlock x:Name="statusText" Text="Status!" FontSize="10" Foreground="WhiteSmoke" Margin="0,0,155,0" Height="19" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="176" />
             <Button Content="Full" x:Name="btnFullScreen" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="25" Click="btnFullScreen_Click" IsEnabled="True" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF969696" Style="{StaticResource SquareButton}" />
-            <Slider Height="18" HorizontalAlignment="Right" Margin="0,0,26,1" x:Name="vidVolumeSlider" VerticalAlignment="Bottom" Width="100" ValueChanged="vidVolumeSlider_ValueChanged" Maximum="1" LargeChange="0.1" Foreground="White" Style="{StaticResource VolumeSlider}" />
+            <Slider Height="18" HorizontalAlignment="Right" Margin="0,0,26,1" x:Name="vidVolumeSlider" VerticalAlignment="Bottom" Width="100" ValueChanged="vidVolumeSlider_ValueChanged" Maximum="1" LargeChange="0.1" Foreground="White" Style="{StaticResource VolumeSlider}" Value="0.5" />
             <TextBlock Margin="0,0,128,2" x:Name="textBlock2" Text="Vol" Foreground="FloralWhite" TextAlignment="Center" HorizontalAlignment="Right" Width="22" Height="17" VerticalAlignment="Bottom" />
             <Button x:Name="btnPause" Content="Pause" HorizontalAlignment="Left" Width="30" Click="btnPause_Click" Style="{StaticResource PauseButton}" Height="20" VerticalAlignment="Bottom"/>
             <local:ClickableSlider Margin="30,0,336,1" x:Name="scrubBar" Maximum="1" LargeChange="0.01" Height="18" VerticalAlignment="Bottom" ValueChanged="scrubBar_ValueChanged" Style="{StaticResource ProgressSlider}" CustomClickEvent="scrubBar_CustomClickEvent" MouseLeftButtonDown="scrubBar_MouseLeftButtonDown"/>
