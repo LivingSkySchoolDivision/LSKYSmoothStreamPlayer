@@ -186,6 +186,43 @@ namespace LSKYSmoothStreamPlayer_PreRecorded
             }
 
         }
+                
+        /// <summary>
+        /// Toggles pause, and displays the appropriate UI elements
+        /// </summary>
+        private void togglePause()
+        {
+            if (isPaused)
+            {
+                unPauseVideo(); 
+            }
+            else
+            {
+                pauseVideo();
+            }
+        }
+
+        private void pauseVideo()
+        {
+            SmoothStreamElement.Pause();
+            isPaused = true;
+            setStatus("Paused");
+            VideoTimeDisplayTimer.Stop();
+            ShowControls();
+            areControlsHideable = false;
+            PauseBars.Visibility = System.Windows.Visibility.Visible;
+        }
+
+        private void unPauseVideo()
+        {
+            isPaused = false;
+            SmoothStreamElement.Play();
+            updateStatusWithTime();
+            VideoTimeDisplayTimer.Start();
+            areControlsHideable = true;
+            PauseBars.Visibility = System.Windows.Visibility.Collapsed;
+            LastMouseMovement = DateTime.Now;
+        }
 
         /// <summary>
         /// Clear the "cover" logo and expose the media
@@ -348,29 +385,12 @@ namespace LSKYSmoothStreamPlayer_PreRecorded
 
         private void SmoothStreamElement_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            btnPause_Click(sender, e);
+            togglePause();
         }
 
         private void btnPause_Click(object sender, RoutedEventArgs e)
         {
-            if (isPaused)
-            {
-                SmoothStreamElement.Play();
-                updateStatusWithTime();
-                VideoTimeDisplayTimer.Start();
-                isPaused = false;
-                areControlsHideable = true;
-            }
-            else
-            {
-                SmoothStreamElement.Pause();
-                setStatus("Paused");
-                VideoTimeDisplayTimer.Stop();
-                isPaused = true;
-                areControlsHideable = false;
-            }
-            LastMouseMovement = DateTime.Now;
-            ShowControls();
+            togglePause();
         }
 
         private void scrubBar_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -383,10 +403,18 @@ namespace LSKYSmoothStreamPlayer_PreRecorded
             setStatus(videoPosition.Hours.ToString("D2") + ":" + videoPosition.Minutes.ToString("D2") + ":" + videoPosition.Seconds.ToString("D2") + " / " + SmoothStreamElement.EndPosition.Hours.ToString("D2") + ":" + SmoothStreamElement.EndPosition.Minutes.ToString("D2") + ":" + SmoothStreamElement.EndPosition.Seconds.ToString("D2")); 
         }
 
-        private void scrubBar_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        private void scrubBar_CustomClickEvent(object sender, EventArgs e)
         {
             try
             {
+                pauseVideo();
+                LastMouseMovement = DateTime.Now;
+
+                /*
+                double progress = scrubBar.Maximum * e.Position.X / scrubBar.ActualWidth;
+                scrubBar.Value = progress;
+                */
+
                 TimeSpan videoEnd = SmoothStreamElement.EndPosition;
                 double totalTicks = (double)videoEnd.Ticks;
                 double percent = scrubBar.Value;
@@ -471,6 +499,20 @@ namespace LSKYSmoothStreamPlayer_PreRecorded
 
         #endregion
 
-       
+        private void Rectangle_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            togglePause();
+        }
+
+        private void Rectangle_MouseLeftButtonDown_1(object sender, MouseButtonEventArgs e)
+        {
+            togglePause();
+        }
+
+        private void scrubBar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            pauseVideo();
+        }
+          
     }
 }
